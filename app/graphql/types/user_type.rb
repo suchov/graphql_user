@@ -10,4 +10,14 @@ Types::UserType = GraphQL::ObjectType.define do
   field :postcode, types.Int, description: 'The postal code of all that'
   field :country, types.String, description: 'In what country all that happens'
   field :id, !types.ID # !not allow the field to be nil - always must have value
+
+  field :all_posts, types[Types::PostType] do
+    description 'All posts'
+    resolve ->(_, _, _) { Post.all }
+  end
+
+  field :all_comments, types[Types::CommentType] do
+    description 'All comments'
+    resolve ->(_, _, _) { Comment.all }
+  end
 end

@@ -12,7 +12,9 @@ Types::QueryType = GraphQL::ObjectType.define do
   end
   # TODO: fields that mast exists:
   # User (first name, last name, street, number, city, postcode, country), Post(user_id, body) and Comment(user_id, body)
+
   # Add fields in User to include all Posts, and in Post to include all Comments
+
   # User should have a custom field to return the full address and the full name.
   # How did you write the method to return the full address of a user?
   field :user, Types::UserType do
@@ -38,4 +40,5 @@ Types::QueryType = GraphQL::ObjectType.define do
       Comment.where(id: args[:id]).first
     }
   end
+
 end
