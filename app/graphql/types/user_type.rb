@@ -15,4 +15,14 @@ Types::UserType = GraphQL::ObjectType.define do
     description 'All posts'
     resolve ->(_, _, _) { Post.all }
   end
+
+  field :full_adrress, types.String do
+    description 'Full address of the user'
+    resolve ->(o, _, _) { [o.postcode, o.country, o.street, o.number].compact.join(' ') }
+  end
+
+  field :full_name, types.String do
+    description 'Full name of the user'
+    resolve ->(o, _, _) { [o.first_name, o.last_name].compact.join(' ') }
+  end
 end
