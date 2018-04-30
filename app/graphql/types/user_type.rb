@@ -15,9 +15,4 @@ Types::UserType = GraphQL::ObjectType.define do
     description 'All posts'
     resolve ->(_, _, _) { Post.all }
   end
-
-  field :all_comments, types[Types::CommentType] do
-    description 'All comments'
-    resolve ->(_, _, _) { Comment.all }
-  end
 end
