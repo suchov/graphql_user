@@ -22,4 +22,20 @@ Types::QueryType = GraphQL::ObjectType.define do
       User.where(id: args[:id]).first
     }
   end
+
+  field :post, Types::PostType do
+    argument :id, types.ID, 'The id of the post to retreve'
+    description "The user's posts in all that mess"
+    resolve ->(obj, args, ctx) {
+      Post.where(id: args[:id]).first
+    }
+  end
+
+  field :comment, Types::CommentType do
+    argument :id, types.ID, 'The id of the comment to retreve'
+    description "The user's comments in all that mess"
+    resolve ->(obj, args, ctx) {
+      Comment.where(id: args[:id]).first
+    }
+  end
 end
