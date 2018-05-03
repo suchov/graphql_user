@@ -5,4 +5,5 @@ Types::MutationType = GraphQL::ObjectType.define do
   # Add at least one validation rule to the models, and check for errors
   field :createUser, function: Mutations::CreateUser.new
   field :updateUser, function: Mutations::UpdateUser.new
+  field :deleteUser, function: Mutations::DeleteUser.new
 end
