@@ -1,3 +1,10 @@
+Types::PostInputType = GraphQL::InputObjectType.define do
+  name 'PostInputType'
+  description 'Properties for creaing or updating Post'
+
+  argument :body, types.String
+end
+
 Types::PostType = GraphQL::ObjectType.define do
   name 'PostType'
 
