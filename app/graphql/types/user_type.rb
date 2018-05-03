@@ -38,4 +38,8 @@ Types::UserType = GraphQL::ObjectType.define do
     description 'Full name of the user'
     resolve ->(o, _, _) { [o.first_name, o.last_name].compact.join(' ') }
   end
+
+  field :errors, types[types.String], 'Reasons object could not be saved' do
+    resolve ->(obj, _, _) { obj.errors.to_a }
+  end
 end
